@@ -18,33 +18,14 @@ const piezas = [
       [1, 1, 1],
       [1, 0, 1],
     ],
-    probabilidad: 0.3,
+    probabilidad: 0.05, // 5%
     color: "red",
   },
-
   {
     nombre: "I",
     forma: [[1, 1, 1, 1]],
-    probabilidad: 0.1,
+    probabilidad: 0.1, // 10%
     color: "blue",
-  },
-  {
-    nombre: "L",
-    forma: [
-      [1, 1, 1],
-      [1, 0, 0],
-    ],
-    probabilidad: 0.1,
-    color: "orange",
-  },
-  {
-    nombre: "J",
-    forma: [
-      [1, 1, 1],
-      [0, 0, 1],
-    ],
-    probabilidad: 0.1,
-    color: "pink",
   },
   {
     nombre: "O",
@@ -52,7 +33,7 @@ const piezas = [
       [1, 1],
       [1, 1],
     ],
-    probabilidad: 0.2,
+    probabilidad: 0.1, // 10%
     color: "yellow",
   },
   {
@@ -61,8 +42,26 @@ const piezas = [
       [1, 1, 1],
       [0, 1, 0],
     ],
-    probabilidad: 0.1,
+    probabilidad: 0.175, // 17.5%
     color: "purple",
+  },
+  {
+    nombre: "L",
+    forma: [
+      [1, 1, 1],
+      [1, 0, 0],
+    ],
+    probabilidad: 0.175, // 17.5%
+    color: "orange",
+  },
+  {
+    nombre: "J",
+    forma: [
+      [1, 1, 1],
+      [0, 0, 1],
+    ],
+    probabilidad: 0.175, // 17.5%
+    color: "pink",
   },
   {
     nombre: "Z",
@@ -70,7 +69,7 @@ const piezas = [
       [1, 1, 0],
       [0, 1, 1],
     ],
-    probabilidad: 0.1,
+    probabilidad: 0.125, // 12.5%
     color: "cyan",
   },
   {
@@ -79,7 +78,7 @@ const piezas = [
       [0, 1, 1],
       [1, 1, 0],
     ],
-    probabilidad: 0.1,
+    probabilidad: 0.125, // 12.5%
     color: "green",
   },
 ];
