@@ -38,6 +38,15 @@ const piezas = [
     color: "orange",
   },
   {
+    nombre: "J",
+    forma: [
+      [1, 1, 1],
+      [0, 0, 1],
+    ],
+    probabilidad: 0.1,
+    color: "pink",
+  },
+  {
     nombre: "O",
     forma: [
       [1, 1],
@@ -63,5 +72,14 @@ const piezas = [
     ],
     probabilidad: 0.1,
     color: "cyan",
+  },
+  {
+    nombre: "S",
+    forma: [
+      [0, 1, 1],
+      [1, 1, 0],
+    ],
+    probabilidad: 0.1,
+    color: "green",
   },
 ];
