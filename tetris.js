@@ -19,13 +19,13 @@ const piezas = [
       [1, 0, 1],
     ],
     probabilidad: 0.05, // 5%
-    color: "red",
+    color: "#F4A3A3", // Pastel red
   },
   {
     nombre: "I",
     forma: [[1, 1, 1, 1]],
     probabilidad: 0.1, // 10%
-    color: "blue",
+    color: "#A3C9F4", // Pastel blue
   },
   {
     nombre: "O",
@@ -34,7 +34,7 @@ const piezas = [
       [1, 1],
     ],
     probabilidad: 0.1, // 10%
-    color: "yellow",
+    color: "#FFF1A3", // Pastel yellow
   },
   {
     nombre: "T",
@@ -43,7 +43,7 @@ const piezas = [
       [0, 1, 0],
     ],
     probabilidad: 0.175, // 17.5%
-    color: "purple",
+    color: "#D7A3F4", // Pastel purple
   },
   {
     nombre: "L",
@@ -52,7 +52,7 @@ const piezas = [
       [1, 0, 0],
     ],
     probabilidad: 0.175, // 17.5%
-    color: "orange",
+    color: "#F4C6A3", // Pastel orange
   },
   {
     nombre: "J",
@@ -61,7 +61,7 @@ const piezas = [
       [0, 0, 1],
     ],
     probabilidad: 0.175, // 17.5%
-    color: "pink",
+    color: "#F4A3E4", // Pastel pink
   },
   {
     nombre: "Z",
@@ -70,7 +70,7 @@ const piezas = [
       [0, 1, 1],
     ],
     probabilidad: 0.125, // 12.5%
-    color: "cyan",
+    color: "#A3F4F1", // Pastel cyan
   },
   {
     nombre: "S",
@@ -79,6 +79,31 @@ const piezas = [
       [1, 1, 0],
     ],
     probabilidad: 0.125, // 12.5%
-    color: "green",
+    color: "#A3F4A8", // Pastel green
   },
 ];
+
+function dibujarTablero() {
+  for (let fila = 0; fila < filas; fila++) {
+    for (let columna = 0; columna < columnas; columna++) {
+      // Selecciona el color basado en el valor de la celda
+      lienzo.fillStyle = tablero[fila][columna] === 1 ? "gray" : "black";
+      // Dibuja la celda
+      lienzo.fillRect(
+        columna * tamanoCelda, // Posición en X
+        fila * tamanoCelda, // Posición en Y
+        tamanoCelda, // Ancho de la celda
+        tamanoCelda // Alto de la celda
+      );
+      // Dibuja el borde de la celda para mayor claridad a la hora de jugar
+      lienzo.strokeStyle = "#CCCCCC"; // Gris claro
+      lienzo.strokeRect(
+        columna * tamanoCelda,
+        fila * tamanoCelda,
+        tamanoCelda,
+        tamanoCelda
+      );
+    }
+  }
+}
+dibujarTablero(); // Dibujar tablero inicial quizás no sea necesario en un futuro
