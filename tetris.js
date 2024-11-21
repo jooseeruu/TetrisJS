@@ -135,3 +135,12 @@ function generarPieza() {
   }
 }
 dibujarPieza(generarPieza(), 0, 0); // Generar pieza inicial quizás no sea necesario en un futuro
+
+function eliminarLinea() {
+  for (let fila = 0; fila < filas; fila++) {
+    if (tablero[fila].every((celda) => celda === 1)) {
+      tablero.splice(fila, 1);
+      tablero.unshift(Array(columnas).fill(0));
+    }
+  }
+}
