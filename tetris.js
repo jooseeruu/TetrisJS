@@ -123,4 +123,15 @@ function dibujarPieza(pieza, x, y) {
     });
   });
 }
-dibujarPieza(piezas[0], 0, 0); // Dibujar pieza inicial quizás no sea necesario en un futuro
+
+function generarPieza() {
+  const random = Math.random();
+  let acumulado = 0;
+  for (const pieza of piezas) {
+    acumulado += pieza.probabilidad;
+    if (random < acumulado) {
+      return pieza;
+    }
+  }
+}
+dibujarPieza(generarPieza(), 0, 0); // Generar pieza inicial quizás no sea necesario en un futuro
