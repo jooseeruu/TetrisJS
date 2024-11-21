@@ -107,3 +107,20 @@ function dibujarTablero() {
   }
 }
 dibujarTablero(); // Dibujar tablero inicial quizás no sea necesario en un futuro
+
+function dibujarPieza(pieza, x, y) {
+  pieza.forma.forEach((fila, i) => {
+    fila.forEach((celda, j) => {
+      if (celda) {
+        lienzo.fillStyle = pieza.color;
+        lienzo.fillRect(
+          (j + x) * tamanoCelda,
+          (i + y) * tamanoCelda,
+          tamanoCelda,
+          tamanoCelda
+        );
+      }
+    });
+  });
+}
+dibujarPieza(piezas[0], 0, 0); // Dibujar pieza inicial quizás no sea necesario en un futuro
