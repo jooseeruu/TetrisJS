@@ -8,14 +8,14 @@ const columnas = 10;
 const tamanoCelda = 30;
 
 // Inicializar tablero
-const tablero = Array.from({ length: filas }, () => Array(columnas).fill(0));
+const tablero = Array.from({ length: filas }, () => Array(columnas).fill(0)); // Inicializo el tablero con todas las celdas en 0
 
 // Piezas disponibles
 const piezas = [
   {
     nombre: "C",
     forma: [
-      [1, 1, 1],
+      [1, 1, 1], // Forma de la pieza
       [1, 0, 1],
     ],
     probabilidad: 0.05, // 5%
@@ -85,8 +85,10 @@ const piezas = [
 
 function dibujarTablero() {
   for (let fila = 0; fila < filas; fila++) {
+    //recorro las filas
     for (let columna = 0; columna < columnas; columna++) {
-      // Selecciona el color basado en el valor de la celda
+      //recorro las columnas
+      // selecciono el color basado en el valor de la celda
       lienzo.fillStyle = tablero[fila][columna] === 1 ? "gray" : "black";
       // Dibuja la celda
       lienzo.fillRect(
@@ -110,12 +112,15 @@ dibujarTablero(); // Dibujar tablero inicial quizás no sea necesario en un futu
 
 function dibujarPieza(pieza, x, y) {
   pieza.forma.forEach((fila, i) => {
+    //recorro la pieza y obtengo la fila y la posicion i
     fila.forEach((celda, j) => {
+      //recorro la fila y reviso si hay celda con valor 1
       if (celda) {
+        //si hay celda con valor 1 pinto la celda
         lienzo.fillStyle = pieza.color;
         lienzo.fillRect(
-          (j + x) * tamanoCelda,
-          (i + y) * tamanoCelda,
+          (j + x) * tamanoCelda, // Posición en X
+          (i + y) * tamanoCelda, // Posición en Y
           tamanoCelda,
           tamanoCelda
         );
@@ -125,12 +130,14 @@ function dibujarPieza(pieza, x, y) {
 }
 
 function generarPieza() {
-  const random = Math.random();
-  let acumulado = 0;
+  const random = Math.random(); //genero un numero aleatorio entre 0 y 1
+  let acumulado = 0; //inicializo la variable acumulado en 0
   for (const pieza of piezas) {
-    acumulado += pieza.probabilidad;
+    //recorro las piezas
+    acumulado += pieza.probabilidad; //sumo la probabilidad de la pieza actual a la variable acumulado
     if (random < acumulado) {
-      return pieza;
+      //si el numero aleatorio es menor a la probabilidad acumulada
+      return pieza; //retorno la pieza
     }
   }
 }
@@ -138,18 +145,24 @@ dibujarPieza(generarPieza(), 0, 0); // Generar pieza inicial quizás no sea nece
 
 function eliminarLinea() {
   for (let fila = 0; fila < filas; fila++) {
+    //recorro las filas
     if (tablero[fila].every((celda) => celda === 1)) {
-      tablero.splice(fila, 1);
-      tablero.unshift(Array(columnas).fill(0));
+      //si todas las celdas de la fila tienen valor 1
+      tablero.splice(fila, 1); //elimino la fila
+      tablero.unshift(Array(columnas).fill(0)); //agrego una fila con todas las celdas en 0
     }
   }
 }
 
 function posicionaPieza(pieza, x, y) {
+  //paso por parametro la pieza, la posicion x y la posicion y de la pieza
   pieza.forma.forEach((fila, i) => {
+    //recorro la pieza y obtengo la fila y la posicion i
     fila.forEach((celda, j) => {
+      //recorro la fila y reviso si hay celda con valor 1
       if (celda) {
-        tablero[y + i][x + j] = 1;
+        //si hay celda con valor 1
+        tablero[y + i][x + j] = 1; //actualizo el tablero con la posicion del x y y de la celda formando así iterativamente la pieza
       }
     });
   });
