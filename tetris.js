@@ -144,3 +144,13 @@ function eliminarLinea() {
     }
   }
 }
+
+function posicionaPieza(pieza, x, y) {
+  pieza.forma.forEach((fila, i) => {
+    fila.forEach((celda, j) => {
+      if (celda) {
+        tablero[y + i][x + j] = 1;
+      }
+    });
+  });
+}
