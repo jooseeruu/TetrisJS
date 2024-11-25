@@ -247,7 +247,7 @@ document.addEventListener("keydown", (event) => {
   }
   // Rotar la pieza
   else if (event.key === "w" || event.key === "W") {
-    //si la tecla presionada es " "
+    //si la tecla presionada es "w" o "W"
     const nuevaPieza = rotarPieza(piezaActual); //roto la pieza
     if (!chequearColisiones(nuevaPieza, posicion.x, posicion.y)) {
       //si no hay colisiones
