@@ -246,4 +246,4 @@ function jugar() {
   dibujarPieza(piezaActual, posicion.x, posicion.y); //llamo a la funcion dibujarPieza para dibujar la pieza actual
 }
 
-setInterval(jugar, 500);
+intervalo = setInterval(jugar, 500);
