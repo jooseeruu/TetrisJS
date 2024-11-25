@@ -108,7 +108,6 @@ function dibujarTablero() {
     }
   }
 }
-dibujarTablero(); // Dibujar tablero inicial quizás no sea necesario en un futuro
 
 function dibujarPieza(pieza, x, y) {
   pieza.forma.forEach((fila, i) => {
@@ -141,7 +140,10 @@ function generarPieza() {
     }
   }
 }
-dibujarPieza(generarPieza(), 0, 0); // Generar pieza inicial quizás no sea necesario en un futuro
+
+// Variables globales para la pieza actual y su posición
+let piezaActual = generarPieza(); //genero una pieza
+let posicion = { x: Math.floor(columnas / 2) - 1, y: 0 }; //posiciono la pieza en el centro del tablero
 
 function eliminarLinea() {
   for (let fila = 0; fila < filas; fila++) {
@@ -152,6 +154,26 @@ function eliminarLinea() {
       tablero.unshift(Array(columnas).fill(0)); //agrego una fila con todas las celdas en 0
     }
   }
+}
+
+function chequearColisiones(pieza, x, y) {
+  //paso por parametro la pieza, la posicion x y la posicion y de la pieza
+  for (let i = 0; i < pieza.forma.length; i++) {
+    //recorro la pieza
+    for (let j = 0; j < pieza.forma[i].length; j++) {
+      //recorro la fila de la pieza
+      if (
+        pieza.forma[i][j] && //si la celda de la pieza tiene valor 1
+        (x + j < 0 || //si la celda de la pieza esta fuera del tablero
+          x + j >= columnas ||
+          y + i >= filas ||
+          tablero[y + i][x + j]) //si la celda de la pieza colisiona con otra celda del tablero
+      ) {
+        return true; //retorno true
+      }
+    }
+  }
+  return false; //si no hay colisiones retorno false
 }
 
 function posicionaPieza(pieza, x, y) {
@@ -167,3 +189,61 @@ function posicionaPieza(pieza, x, y) {
     });
   });
 }
+
+function actualizar() {
+  if (chequearColisiones(piezaActual, posicion.x, posicion.y + 1)) {
+    //si hay colisiones
+    posicionaPieza(piezaActual, posicion.x, posicion.y); //posiciono la pieza
+    eliminarLinea(); //elimino la linea
+    piezaActual = generarPieza(); //genero una nueva pieza
+    posicion = { x: Math.floor(columnas / 2) - 1, y: 0 }; //posiciono la pieza en el centro del tablero
+
+    if (chequearColisiones(piezaActual, posicion.x, posicion.y)) {
+      //si hay colisiones
+      clearInterval(intervalo); //detengo el intervalo
+      alert(
+        //muestro un mensaje
+        "FIN DE LA PARTIDA. Este juego ha sido desarrollado por José Rubén Arjona Jiménez."
+      );
+    }
+  } else {
+    posicion.y++;
+  }
+}
+
+// Control de teclado
+document.addEventListener("keydown", (event) => {
+  //realmente no es especialmente util ese ||
+  //escucho el evento keydown
+  if (event.key === "a" || event.key === "A") {
+    //si la tecla presionada es "a" o "A"
+    if (!chequearColisiones(piezaActual, posicion.x - 1, posicion.y)) {
+      //si no hay colisiones
+      posicion.x--; //actualizo la posicion x
+    }
+  } else if (event.key === "d" || event.key === "D") {
+    //si la tecla presionada es "d" o "D"
+    if (!chequearColisiones(piezaActual, posicion.x + 1, posicion.y)) {
+      //si no hay colisiones
+      posicion.x++; //actualizo la posicion x
+    }
+  } else if (event.key === "s" || event.key === "S") {
+    //si la tecla presionada es "s" o "S"
+    if (!chequearColisiones(piezaActual, posicion.x, posicion.y + 1)) {
+      //si no hay colisiones
+      posicion.y++; //actualizo la posicion y
+    }
+  }
+  dibujarTablero();
+  dibujarPieza(piezaActual, posicion.x, posicion.y);
+});
+
+// Jugar Tetris
+function jugar() {
+  //funcion jugar
+  actualizar(); //llamo a la funcion actualizar
+  dibujarTablero(); //llamo a la funcion dibujarTablero para dibujar el tablero
+  dibujarPieza(piezaActual, posicion.x, posicion.y); //llamo a la funcion dibujarPieza para dibujar la pieza actual
+}
+
+setInterval(jugar, 500);
