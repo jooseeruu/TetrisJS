@@ -146,14 +146,27 @@ let piezaActual = generarPieza(); //genero una pieza
 let posicion = { x: Math.floor(columnas / 2) - 1, y: 0 }; //posiciono la pieza en el centro del tablero
 
 function eliminarLinea() {
+  let lineasEliminadas = 0; //inicializo la variable lineasEliminadas en 0
   for (let fila = 0; fila < filas; fila++) {
     //recorro las filas
     if (tablero[fila].every((celda) => celda === 1)) {
       //si todas las celdas de la fila tienen valor 1
       tablero.splice(fila, 1); //elimino la fila
       tablero.unshift(Array(columnas).fill(0)); //agrego una fila con todas las celdas en 0
+      lineasEliminadas++; //incremento la variable lineasEliminadas
     }
   }
+  if (lineasEliminadas > 0) {
+    //si hay lineas eliminadas
+    actualizarPuntuacion(lineasEliminadas); //actualizo la puntuacion
+  }
+}
+
+function actualizarPuntuacion(lineasEliminadas) {
+  let puntuacion = 0; //inicializo la variable puntuacion en 0
+  const puntosPorLinea = [0, 100, 300, 500, 800]; // Puntos según líneas eliminadas
+  puntuacion += puntosPorLinea[lineasEliminadas]; //sumo los puntos por linea eliminada a la puntuacion
+  document.getElementById("puntuacion").innerText = `Puntuación: ${puntuacion}`; //muestro la puntuacion en el html;
 }
 
 function chequearColisiones(pieza, x, y) {
@@ -214,7 +227,8 @@ function actualizar() {
       clearInterval(intervalo); //detengo el intervalo
       alert(
         //muestro un mensaje
-        "FIN DE LA PARTIDA. Este juego ha sido desarrollado por José Rubén Arjona Jiménez."
+        `FIN DE LA PARTIDA. Este juego ha sido desarrollado por José Rubén Arjona Jiménez.
+        ${document.getElementById("puntuacion").innerText}` //muestro la puntuacion
       );
     }
   } else {
