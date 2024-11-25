@@ -1,0 +1,30 @@
+body {
+  background: #282c34;
+  color: #fb6161;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#puntuacion {
+  position: absolute;
+  top: 10px; /* Ajusta esta línea para colocar la puntuación más arriba */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+canvas {
+  display: block;
+  margin: 0 auto;
+  background: #000;
+  border: 2px solid #fb6161;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}

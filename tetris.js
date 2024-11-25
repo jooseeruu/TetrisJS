@@ -161,9 +161,8 @@ function eliminarLinea() {
     actualizarPuntuacion(lineasEliminadas); //actualizo la puntuacion
   }
 }
-
+let puntuacion = 0; //inicializo la variable puntuacion en 0
 function actualizarPuntuacion(lineasEliminadas) {
-  let puntuacion = 0; //inicializo la variable puntuacion en 0
   const puntosPorLinea = [0, 100, 300, 500, 800]; // Puntos según líneas eliminadas
   puntuacion += puntosPorLinea[lineasEliminadas]; //sumo los puntos por linea eliminada a la puntuacion
   document.getElementById("puntuacion").innerText = `Puntuación: ${puntuacion}`; //muestro la puntuacion en el html;
