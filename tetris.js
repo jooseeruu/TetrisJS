@@ -190,6 +190,17 @@ function posicionaPieza(pieza, x, y) {
   });
 }
 
+function rotarPieza(pieza) {
+  //paso por parametro la pieza
+  const nuevaForma = []; //inicializo un array vacio
+  for (let i = 0; i < pieza.forma[0].length; i++) {
+    //recorro la pieza
+    nuevaForma.push(pieza.forma.map((fila) => fila[i]).reverse()); //roto la pieza
+  }
+  //retorno la pieza rotada, los tres puntos es un spread operator que se utiliza para copiar los valores de un objeto menos las propiedades que se quieren cambiar
+  return { ...pieza, forma: nuevaForma };
+}
+
 function actualizar() {
   if (chequearColisiones(piezaActual, posicion.x, posicion.y + 1)) {
     //si hay colisiones
@@ -232,6 +243,15 @@ document.addEventListener("keydown", (event) => {
     if (!chequearColisiones(piezaActual, posicion.x, posicion.y + 1)) {
       //si no hay colisiones
       posicion.y++; //actualizo la posicion y
+    }
+  }
+  // Rotar la pieza
+  else if (event.key === "w" || event.key === "W") {
+    //si la tecla presionada es " "
+    const nuevaPieza = rotarPieza(piezaActual); //roto la pieza
+    if (!chequearColisiones(nuevaPieza, posicion.x, posicion.y)) {
+      //si no hay colisiones
+      piezaActual = nuevaPieza; //actualizo la pieza
     }
   }
   dibujarTablero();
