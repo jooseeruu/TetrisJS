@@ -19,13 +19,13 @@ const piezas = [
       [1, 0, 1],
     ],
     probabilidad: 0.05, // 5%
-    color: "#F4A3A3", // Pastel red
+    color: "#FF00FF", // Neon Magenta
   },
   {
     nombre: "I",
     forma: [[1, 1, 1, 1]],
     probabilidad: 0.1, // 10%
-    color: "#A3C9F4", // Pastel blue
+    color: "#00FFFF", // Neon Cyan
   },
   {
     nombre: "O",
@@ -34,7 +34,7 @@ const piezas = [
       [1, 1],
     ],
     probabilidad: 0.1, // 10%
-    color: "#FFF1A3", // Pastel yellow
+    color: "#FFFF00", // Neon Yellow
   },
   {
     nombre: "T",
@@ -43,7 +43,7 @@ const piezas = [
       [0, 1, 0],
     ],
     probabilidad: 0.175, // 17.5%
-    color: "#D7A3F4", // Pastel purple
+    color: "#FF00FF", // Neon Magenta
   },
   {
     nombre: "L",
@@ -52,7 +52,7 @@ const piezas = [
       [1, 0, 0],
     ],
     probabilidad: 0.175, // 17.5%
-    color: "#F4C6A3", // Pastel orange
+    color: "#FF4500", // Neon Orange-Red
   },
   {
     nombre: "J",
@@ -61,7 +61,7 @@ const piezas = [
       [0, 0, 1],
     ],
     probabilidad: 0.175, // 17.5%
-    color: "#F4A3E4", // Pastel pink
+    color: "#FF69B4", // Neon Pink
   },
   {
     nombre: "Z",
@@ -70,7 +70,7 @@ const piezas = [
       [0, 1, 1],
     ],
     probabilidad: 0.125, // 12.5%
-    color: "#A3F4F1", // Pastel cyan
+    color: "#00FF00", // Neon Green
   },
   {
     nombre: "S",
@@ -79,7 +79,7 @@ const piezas = [
       [1, 1, 0],
     ],
     probabilidad: 0.125, // 12.5%
-    color: "#A3F4A8", // Pastel green
+    color: "#32CD32", // Neon Lime
   },
 ];
 
@@ -227,7 +227,8 @@ function actualizar() {
       alert(
         //muestro un mensaje
         `FIN DE LA PARTIDA. Este juego ha sido desarrollado por José Rubén Arjona Jiménez.
-        ${document.getElementById("puntuacion").innerText}` //muestro la puntuacion
+        ${document.getElementById("puntuacion").innerText}
+        ${document.getElementById("nivel").innerText}` //muestro la puntuacion
       );
     }
   } else {
@@ -279,4 +280,30 @@ function jugar() {
   dibujarPieza(piezaActual, posicion.x, posicion.y); //llamo a la funcion dibujarPieza para dibujar la pieza actual
 }
 
-intervalo = setInterval(jugar, 500);
+let intervalo = setInterval(jugar, 500); // Llama a la función jugar cada 500 ms
+let velocidad = 500; // Inicializa la velocidad del juego
+let nivel = 1; // Nivel inicial
+
+function incrementarDificultad() {
+  const puntuacionParaSubirNivel = 300;
+  const velocidadMinima = 100;
+  const decremento = 50;
+
+  if (
+    puntuacion >= nivel * puntuacionParaSubirNivel &&
+    velocidad > velocidadMinima
+  ) {
+    nivel++;
+    clearInterval(intervalo);
+    velocidad = Math.max(velocidadMinima, velocidad - decremento);
+    intervalo = setInterval(jugar, velocidad);
+    document.getElementById("nivel").innerText = `Nivel: ${nivel}`;
+  }
+}
+
+const actualizarPuntuacionOriginal = actualizarPuntuacion;
+actualizarPuntuacion = (lineasEliminadas) => {
+  // sobreescribe la función actualizarPuntuacion original no es una buena practica pero es una forma de hacerlo sin modificar el codigo original
+  actualizarPuntuacionOriginal(lineasEliminadas); // Llama a la función original
+  incrementarDificultad(); // Incrementa la dificultad según la puntuación
+};

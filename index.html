@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,8 +14,21 @@
     </style>
   </head>
   <body>
-    <div id="puntuacion">Puntuación: 0</div>
-    <!-- Puntuación -->
+    <section>
+      <div id="puntuacion">Puntuación: 0</div>
+      <div id="nivel">Nivel:1</div>
+    </section>
+    <!-- Controles -->
+    <div id="controles">
+      <p>Usa las teclas:</p>
+      <ul>
+        <li><span class="tecla">A</span>: Mover izquierda</li>
+        <li><span class="tecla">D</span>: Mover derecha</li>
+        <li><span class="tecla">S</span>: Mover abajo</li>
+        <li><span class="tecla">W</span>: Rotar pieza</li>
+      </ul>
+    </div>
+
     <canvas id="tetris" width="300" height="600"></canvas>
     <script src="tetris.js"></script>
   </body>
