@@ -20,6 +20,7 @@ function actualizar() {
         ${document.getElementById("puntuacion").innerText}
         ${document.getElementById("nivel").innerText}` //muestro la puntuacion
       );
+      location.reload(); //recargo la pagina
     }
   } else {
     posicion.y++;
