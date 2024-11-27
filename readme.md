@@ -20,14 +20,4 @@ Este proyecto implementa el clásico juego Tetris utilizando únicamente HTML, C
 - **W** -> Rotar pieza.
 
 ## Estructura del Proyecto
-
-📦src
- ┣ 📂css
- ┃ ┗ 📜styles.css
- ┗ 📂js
- ┃ ┣ 📜colisiones.js
- ┃ ┣ 📜controlTeclado.js
- ┃ ┣ 📜juego.js
- ┃ ┣ 📜pieza.js
- ┃ ┗ 📜tablero.js
-📜index.html
+![tree](image.png)
