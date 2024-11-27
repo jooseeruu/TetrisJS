@@ -70,7 +70,7 @@ function incrementarDificultad() {
   ) {
     //incremento el nivel, detengo el intervalo, decremento la velocidad y vuelvo a iniciar el intervalo
     nivel++;
-    clearInterval(intervalo);
+    clearInterval(intervalo); //detengo el intervalo para cambiar la velocidad (no se puede cambiar la velocidad de un intervalo en ejecución)
     velocidad = Math.max(velocidadMinima, velocidad - decremento);
     intervalo = setInterval(jugar, velocidad);
     document.getElementById("nivel").innerText = `Nivel: ${nivel}`;
