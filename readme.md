@@ -20,4 +20,5 @@ Este proyecto implementa el clásico juego Tetris utilizando únicamente HTML, C
 - **W** -> Rotar pieza.
 
 ## Estructura del Proyecto
+
 ![tree](image.png)
