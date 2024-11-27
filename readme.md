@@ -1,20 +1,20 @@
-# TetrisJS by Ruben Arjona
+# TetrisJS por Rubén Arjona
 
-Este es un proyecto del clásico juego Tetris implementado utilizando únicamente HTML, CSS y JS.
+Este proyecto implementa el clásico juego Tetris utilizando únicamente HTML, CSS y JavaScript.
 
 ## Instalación
 
 1. Clonar el repositorio:
 
-```bash
-git clone https://github.com/jooseeruu/TetrisJS.git
-```
+    ```bash
+    git clone https://github.com/jooseeruu/TetrisJS.git
+    ```
 
-2. Abrir el archivo `index.html` en tu navegador.
+2. Abre el archivo `index.html` en tu navegador.
 
-## Uso
+## Controles
 
-*A* -> Mover a la izquierda.
-*D* -> Mover a la derecha.
-*S* -> Bajar más rapido.
-*W* -> Rotar la pieza.
+- **A** -> Mover a la izquierda.
+- **D** -> Mover a la derecha.
+- **S** -> Acelerar descenso.
+- **W** -> Rotar pieza.
