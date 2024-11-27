@@ -47,6 +47,6 @@ Este proyecto implementa el clásico juego Tetris utilizando únicamente HTML, C
 
 `eliminarLinea()`: Esta función verifica y elimina las líneas completas del tablero, actualizando la puntuación del jugador.
 
-`actualizarPuntuacion(lineasEliminadas)`: Esta función actualiza la puntuación del jugador según el número de líneas eliminadas.
+`actualizarPuntuacionYNivel(lineasEliminadas)`: Esta función actualiza la puntuación del jugador según el número de líneas eliminadas.
 
 `incrementarDificultad()`: Esta función incrementa la dificultad del juego al aumentar el nivel y disminuir el intervalo de tiempo entre actualizaciones, basado en la puntuación del jugador.
