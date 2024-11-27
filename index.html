@@ -4,23 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tetris by Ruben Arjona</title>
+
+    <!-- Estilos -->
     <link rel="stylesheet" href="/src/css/styles.css" />
     <style>
       canvas {
+        /* Estilos predeterminados */
         display: block;
         margin: 0 auto;
         background: #000;
       }
     </style>
   </head>
+
   <body>
-    <!-- Estadísticas -->
-    <section>
-      <div id="puntuacion">Puntuación: 0</div>
-      <div id="nivel">Nivel:1</div>
+    <!-- Seccion estadisticas -->
+    <section id="estadisticas">
+      <div id="puntuacion">Puntuación 0</div>
+      <div id="nivel">Nivel 1</div>
     </section>
-    <!-- Controles -->
-    <div id="controles">
+
+    <!-- Seccion controles -->
+    <section id="controles">
       <p>Usa las teclas:</p>
       <ul>
         <li><span class="tecla">A</span>: Mover izquierda</li>
@@ -28,9 +33,14 @@
         <li><span class="tecla">S</span>: Mover abajo</li>
         <li><span class="tecla">W</span>: Rotar pieza</li>
       </ul>
-    </div>
+    </section>
 
-    <canvas id="tetris" width="300" height="600"></canvas>
+    <!-- Canvas 300x600 predeterminado -->
+    <main id="juego">
+      <canvas id="tetris" width="300" height="600"></canvas>
+    </main>
+
+    <!-- Scripts -->
     <script src="src/js/tablero.js"></script>
     <script src="src/js/pieza.js"></script>
     <script src="src/js/colisiones.js"></script>
