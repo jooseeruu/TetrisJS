@@ -79,6 +79,7 @@ function incrementarDificultad() {
 
 const actualizarPuntuacionOriginal = actualizarPuntuacion; // Guarda la función original
 actualizarPuntuacion = (lineasEliminadas) => {
+  // monkey patching  o parcheo de la función actualizarPuntuacion
   // sobreescribe la función actualizarPuntuacion original no es una buena practica pero es una forma de hacerlo sin modificar el codigo original
   actualizarPuntuacionOriginal(lineasEliminadas); // Llama a la función original
   incrementarDificultad(); // Incrementa la dificultad según la puntuación
