@@ -59,14 +59,16 @@ function actualizarPuntuacion(lineasEliminadas) {
 }
 
 function incrementarDificultad() {
-  const puntuacionParaSubirNivel = 300;
-  const velocidadMinima = 100;
-  const decremento = 50;
+  const puntuacionParaSubirNivel = 300; // puntuación necesaria para subir de nivel
+  const velocidadMinima = 100; // velocidad mínima del juego (ms) a  menos velocidad mas dificultad
+  const decremento = 50; // decremento de velocidad al subir de nivel
 
   if (
+    //si la puntuacion es mayor o igual al nivel por la puntuacion para subir de nivel y la velocidad es mayor a la velocidad minima
     puntuacion >= nivel * puntuacionParaSubirNivel &&
     velocidad > velocidadMinima
   ) {
+    //incremento el nivel, detengo el intervalo, decremento la velocidad y vuelvo a iniciar el intervalo
     nivel++;
     clearInterval(intervalo);
     velocidad = Math.max(velocidadMinima, velocidad - decremento);
@@ -75,7 +77,7 @@ function incrementarDificultad() {
   }
 }
 
-const actualizarPuntuacionOriginal = actualizarPuntuacion;
+const actualizarPuntuacionOriginal = actualizarPuntuacion; // Guarda la función original
 actualizarPuntuacion = (lineasEliminadas) => {
   // sobreescribe la función actualizarPuntuacion original no es una buena practica pero es una forma de hacerlo sin modificar el codigo original
   actualizarPuntuacionOriginal(lineasEliminadas); // Llama a la función original
