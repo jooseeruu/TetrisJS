@@ -2,6 +2,10 @@
 
 Este proyecto implementa el clásico juego Tetris utilizando únicamente HTML, CSS y JavaScript.
 
+## ¡JUGAR!
+
+- Puedes probar el juego en este link: [TetrisJS](https://tetrisbyjooseeruu.netlify.app/)
+
 ## Instalación
 
 1. Clonar el repositorio:
@@ -47,7 +51,5 @@ Este proyecto implementa el clásico juego Tetris utilizando únicamente HTML, C
 
 `incrementarDificultad()`: Esta función incrementa la dificultad del juego al aumentar el nivel y disminuir el intervalo de tiempo entre actualizaciones, basado en la puntuación del jugador.
 
-## ¡JUGAR!
 
-- Puedes probar el juego en este link: [TetrisJS](https://tetrisbyjooseeruu.netlify.app/)
 
