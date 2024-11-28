@@ -23,10 +23,6 @@ Este proyecto implementa el clásico juego Tetris utilizando únicamente HTML, C
 - **S** -> Acelerar descenso.
 - **W** -> Rotar pieza.
 
-## Estructura del Proyecto (Codigo Modular)
-
-![tree](image.png)
-
 ## Funciones
 
 `dibujarTablero()`: Esta función se encarga de dibujar el tablero del juego en el canvas. Recorre todas las filas y columnas del tablero, y para cada celda, selecciona un color basado en su valor (gris si la celda está ocupada y negro si está vacía). Luego, dibuja la celda y su borde en el canvas para mayor claridad durante el juego.
