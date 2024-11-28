@@ -60,7 +60,7 @@ function actualizarPuntuacionYNivel(lineasEliminadas) {
 }
 
 function incrementarDificultad() {
-  const puntuacionParaSubirNivel = 1000; // puntuación necesaria para subir de nivel
+  const puntuacionParaSubirNivel = 300; // puntuación necesaria para subir de nivel
   const velocidadMinima = 100; // velocidad mínima del juego (ms) a menos velocidad mas dificultad
   const decremento = 50; // decremento de velocidad al subir de nivel
 
